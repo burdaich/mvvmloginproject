@@ -1,6 +1,5 @@
 package com.example.mvvmlogin.repository
 
-import android.widget.ResourceCursorAdapter
 import com.example.mvvmlogin.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
