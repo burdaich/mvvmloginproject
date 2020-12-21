@@ -2,8 +2,8 @@ package com.example.mvvmlogin.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mvvmlogin.repository.AuthRepository
-import com.example.mvvmlogin.repository.BaseRepository
+import com.example.mvvmlogin.data.repository.AuthRepository
+import com.example.mvvmlogin.data.repository.BaseRepository
 import java.lang.IllegalArgumentException
 
 class ViewModelFactory(private val repository: BaseRepository) :

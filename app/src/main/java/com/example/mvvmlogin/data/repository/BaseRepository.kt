@@ -1,6 +1,6 @@
-package com.example.mvvmlogin.repository
+package com.example.mvvmlogin.data.repository
 
-import com.example.mvvmlogin.network.Resource
+import com.example.mvvmlogin.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

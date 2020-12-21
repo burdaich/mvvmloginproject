@@ -1,6 +1,6 @@
-package com.example.mvvmlogin.repository
+package com.example.mvvmlogin.data.repository
 
-import com.example.mvvmlogin.network.AuthApi
+import com.example.mvvmlogin.data.network.AuthApi
 
 class AuthRepository(
     private val api: AuthApi

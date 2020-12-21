@@ -1,4 +1,4 @@
-package com.example.mvvmlogin.network
+package com.example.mvvmlogin.data.network
 
 import okhttp3.ResponseBody
 

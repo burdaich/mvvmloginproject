@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.mvvmlogin.databinding.FragmentLoginBinding
-import com.example.mvvmlogin.network.AuthApi
-import com.example.mvvmlogin.network.Resource
-import com.example.mvvmlogin.repository.AuthRepository
+import com.example.mvvmlogin.data.network.AuthApi
+import com.example.mvvmlogin.data.network.Resource
+import com.example.mvvmlogin.data.repository.AuthRepository
 import com.example.mvvmlogin.viewModel.AuthViewModel
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,10 +33,12 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
+                    lifecycleScope.launch {
+                        userPreferences.saveAuthToken(it.value.user.access_token)
+                    }
                 }
 
-                is Resource.Failure ->{
+                is Resource.Failure -> {
                     Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_LONG).show()
                 }
             }
