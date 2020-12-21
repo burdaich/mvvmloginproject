@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import com.example.mvvmlogin.ui.AuthActivity
 import com.example.mvvmlogin.data.UserPreferences
+import com.example.mvvmlogin.ui.HomeActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,8 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         val userPreferences = UserPreferences(this)
         userPreferences.authToken.asLiveData().observe(this, Observer {
-            Toast.makeText(this, it ?: "Token is Null", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, AuthActivity::class.java))
+            val activity = if (it == null) AuthActivity::class.java else HomeActivity::class.java
+            startActivity(Intent(this, activity))
         })
 
 
