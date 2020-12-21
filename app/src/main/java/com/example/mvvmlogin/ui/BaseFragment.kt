@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.example.mvvmlogin.network.RemoteDataSource
 import com.example.mvvmlogin.repository.BaseRepository
+import com.example.mvvmlogin.viewModel.ViewModelFactory
 
 abstract class BaseFragment<VM : ViewModel, B : ViewBinding, R : BaseRepository> : Fragment() {
 
@@ -23,7 +24,9 @@ abstract class BaseFragment<VM : ViewModel, B : ViewBinding, R : BaseRepository>
         savedInstanceState: Bundle?
     ): View? {
         binding = getFragmentBinding(inflater, container)
-        val factory = ViewModelFactory(getFragmentRepository())
+        val factory = ViewModelFactory(
+            getFragmentRepository()
+        )
         viewModel = ViewModelProvider(this, factory).get(getViewModel())
         return binding.root
     }
