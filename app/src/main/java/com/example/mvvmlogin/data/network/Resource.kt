@@ -9,4 +9,6 @@ sealed class Resource<out T> {
         val errorCode: Int?,
         val errorReady: ResponseBody?
     ) : Resource<Nothing>()
+
+    object Loading : Resource<Nothing>()
 }
